@@ -1,0 +1,42 @@
+/* 
+Questo è un file d'esempio per quel mongoloide di laccetti
+Tutto quello che vedete diventerà inutile post-esame di programmazione.
+Per favore imparatevi il Python/Rust se volete essere utili. 
+*/
+
+// Dichiaro l'inizio del programma per fare un array della settimana: '
+begin settimana
+
+    // Creo una Array di nome 'Temp' di tipo reale 
+    var: Temp[7]: array of real
+
+    // Vado, inoltre, a creare due variabili, Media (Di tipo Reale) e i (Di tipo int)
+    var: media: real
+    var: i: integer
+
+    /*
+    Diamo poi un ciclo for, che usa la variabile 'i' da 1 a 7 
+    (Corrispondente ai giorni della settimana)
+    In modo da leggere le variabili della temperatura
+    */
+    for i := 1 to 7 do
+        read Temp(i)
+    endfor
+    
+    // Diamo il valore di media a 0:
+    media := 0
+
+    /*
+    Usiamo il ciclo for con un 'do' per far fare un incremento del valore della media
+    + la sommatoria della temperatura da 1 a 7.
+    Ricordate, Laccetti è stupido quindi l'array per lui inizia da 1
+    */
+
+    for i := 1 to 7 do:
+        media := media + Temp(i)
+    endfor
+
+    media := media/7 //Dividiamo la media per 7
+    print media //Stampiamo gli output della media
+    
+end settimana
