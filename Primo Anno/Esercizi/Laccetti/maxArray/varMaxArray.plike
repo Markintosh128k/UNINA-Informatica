@@ -1,0 +1,35 @@
+// Questa versione e' stata fatta da GPT
+
+// Dichiaro l'inizio del programma:
+
+begin maxArray
+    /* Dichiaro una variabile A contenente un array di numeri reali */
+    var: a[100]: array of real
+
+    /* Dichiaro due variabili dove:
+    i viene usata nel ciclo for per incrmento
+    n viene usata per indicare un numero generico*/ 
+    var: i, n: integer
+    var: max: real  // Aggiungo max come variabile per il valore massimo
+
+    // Leggi la dimensione dell'array
+    read n
+
+    /* Inizializzo max al primo elemento dell'array
+    Siccome Laccetti non ha un cervello l'array inizia da 1 e non da 0 dio cane*/
+    max = a(1)
+
+    // Ciclo for per iterare sull'array da 2 fino a n
+    for i = 2 to n do
+
+        // Controllo se l'elemento corrente è maggiore del massimo trovato finora
+        if (max < a(i)) then
+            max = a(i)  // Aggiorno max se trovo un valore maggiore
+        endif
+        
+    // Fine ciclo for
+    end for
+
+// Ora max contiene il valore massimo dell'array
+// Chiudiamo l'aborto.
+end maxArray
