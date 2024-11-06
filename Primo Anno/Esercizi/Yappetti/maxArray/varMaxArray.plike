@@ -20,7 +20,7 @@ begin maxArray
     max = a(1)
 
     // Ciclo for per iterare sull'array da 2 fino a n
-    for i = 2 to n do
+    for i = 2, n do
 
         // Controllo se l'elemento corrente è maggiore del massimo trovato finora
         if (max < a(i)) then
