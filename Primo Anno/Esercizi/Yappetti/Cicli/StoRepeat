@@ -1,0 +1,8 @@
+/* Se ti chiami laccetti amerai questo repeat
+Praticamente un do while assillante*/
+
+repeat
+    istruzione
+until
+
+//Nota bene: Col repeat viene ripetuta almeno una volta l'istruzione.

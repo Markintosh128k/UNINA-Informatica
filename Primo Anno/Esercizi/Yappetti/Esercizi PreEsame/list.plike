@@ -1,0 +1,74 @@
+(* Linked-List Ordinata Iterativa *)
+procedure linkedListIterativa
+    var: head, newnode, curr, prev: list_pointer
+
+    (* Creazione del nuovo nodo *)
+    newnode := create_node()
+    newnode.info := valore
+    newnode.link := NULL
+
+    (* Caso 1: Inserimento in testa o lista vuota *)
+    if (head = NULL OR valore <= head.info) then
+        newnode.link := head
+        head := newnode
+    else
+        (* Caso 2: Scorrimento della lista per trovare la posizione corretta *)
+        prev := NULL
+        curr := head
+        while (curr != NULL AND curr.info < valore) do
+            prev := curr
+            curr := curr.link
+        endwhile
+
+        (* Inserimento del nuovo nodo tra prev e curr *)
+        newnode.link := curr
+        prev.link := newnode
+    endif
+end procedure
+
+(* Linked-List Ordinata Ricorsiva*)
+procedure linkedlistRicorsiva
+    var: head, newnode: list_pointer
+
+    (* Caso base: Inserimento in testa o lista vuota *)
+    if (head = NULL OR valore <= head.info) then
+        newnode := create_node()
+        newnode.info := valore
+        newnode.link := head
+        head := newnode
+    else
+        (* Caso ricorsivo: Passa al nodo successivo *)
+        inserimento_ordinato_ricorsivo(valore, head.link)
+    endif
+end procedure
+
+(* Programma per usare entrambe le liste: *)
+begin linkedList
+    var: head, newnode: list_pointer
+    var: N, i, valore: integer
+
+    (* Creazione della lista inizialmente vuota *)
+    head := NULL
+
+    print "Inserisci il numero di elementi da aggiungere nella lista ordinata:"
+    read N
+
+    (* Inserimento di N elementi *)
+    for i := 1 to N do
+        print "Inserisci il valore dell'elemento", i, ":"
+        read valore
+
+        (* Usa una delle due versioni: iterativa o ricorsiva *)
+        inserimento_ordinato_iterativo(valore, head)
+        (* oppure: inserimento_ordinato_ricorsivo(valore, head) *)
+    endfor
+
+    (* Stampa degli elementi della lista *)
+    print "Elementi della lista ordinata:"
+    var: temp: list_pointer
+    temp := head
+    while (temp != NULL) do
+        print temp.info
+        temp := temp.link
+    endwhile
+end linkedList

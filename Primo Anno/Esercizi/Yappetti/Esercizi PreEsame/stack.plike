@@ -1,0 +1,45 @@
+procedure visualizzaStack
+
+    var: head, temp: list_pointer
+
+    (* Inizializzazione del puntatore temporaneo *)
+    temp := head
+
+    (* Controllo se lo stack è vuoto *)
+    if (temp = NULL) then
+        print "Lo stack è vuoto."
+    else
+        print "I campi info dello stack sono:"
+        (* Scorrimento dello stack e stampa dei campi info *)
+        while (temp != NULL) do
+            print temp.info
+            temp := temp.link
+        endwhile
+    endif
+end procedure
+
+(* Programma per visualizzare lo stack *)
+begin stack
+
+    var: head, newnode: list_pointer
+    var: N, i, value: integer
+
+    (* Creazione dello stack mediante input *)
+    head := NULL
+    print "Inserisci il numero di elementi nello stack:"
+    read N
+
+    for i := 1 to N do
+        (* Creazione di un nuovo nodo *)
+        newnode := create_node()
+        print "Inserisci il valore per l'elemento", i, ":"
+        read value
+        newnode.info := value
+        newnode.link := head  (* Inserimento in testa *)
+        head := newnode
+    endfor
+
+    (* Visualizzazione dei campi info dello stack *)
+    visualizza_stack(head)
+
+end stack

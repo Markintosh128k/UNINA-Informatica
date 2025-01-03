@@ -1,0 +1,48 @@
+begin partition
+
+    var: N, i, j, pivot, temp: integer
+    var: A[1..100]: array of integer
+
+    (* Lettura della dimensione dell'array *)
+    print "Inserisci la dimensione dell'array:"
+    read N
+
+    (* Lettura degli elementi dell'array *)
+    print "Inserisci gli elementi dell'array:"
+    for i := 1 to N do
+        read A(i)
+    endfor
+
+    (* Lettura del pivot *)
+    print "Inserisci il valore del pivot:"
+    read pivot
+
+    (* Inizializzazione degli indici di partizione *)
+    i := 1
+    j := N
+
+    (* Algoritmo di partizione *)
+    while (i <= j) do
+        while (A(i) <= pivot AND i <= N) do
+            i := i + 1
+        endwhile
+
+        while (A(j) > pivot AND j >= 1) do
+            j := j - 1
+        endwhile
+
+        if (i < j) then
+            (* Scambio degli elementi *)
+            temp := A(i)
+            A(i) := A(j)
+            A(j) := temp
+        endif
+    endwhile
+
+    (* Stampa del risultato della partizione *)
+    print "Array dopo la partizione:"
+    for i := 1 to N do
+        print A(i)
+    endfor
+    
+end partition

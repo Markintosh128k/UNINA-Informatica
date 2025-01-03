@@ -1,0 +1,8 @@
+// Dichiaro l'inizio del programma
+begin example
+
+// Quando usi il for sai cosa stai facendo
+// Inoltre lo dichiari quando sai quante volte il blocco di istruzioni deve essere ripetuto
+for (condizione) do
+    istruzione
+end for
