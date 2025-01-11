@@ -1,0 +1,29 @@
+(*
+Sia dato un array 2D A di dimensioni MxN, con M pari, A[i,j] rappresenta il risultato dello studente j
+ottenuto alla prova i. L’array 1D P (di dimensione M) contiene per ciascuna prova, il punteggio
+minimo per il superamento della prova stessa (P(i) è il punteggio minimo per superare la prova i).
+Progettare in p like, un algoritmo che restituisca sottoforma di procedure l’array RIS(di dimensione
+ovviamente N) che fornisca il punteggio totale ottenuto nelle prove superate se lo studente ha
+superato almeno metà della prove, altrimenti restituisca 0. 
+*)
+
+procedure calcolaPunteggio (M, N, A, P, RIS)
+    var: i, j, studentiPassati integer
+
+    for j := 1 to N do
+        studentiPassati := 0
+        RIS(j):= 0
+
+        for i := 1 to M do
+        if (A(i,j) >= P(i)) then
+            studentiPassati := studentiPassati + 1
+            RIS(j) := RIS(j) + a(i, j)
+        endif
+        endfor
+    
+
+        if (studentiPassati >= M/2) then
+            RIS(j) := 0
+        endif
+    endfor
+end procedure

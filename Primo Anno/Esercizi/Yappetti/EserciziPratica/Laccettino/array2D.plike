@@ -1,0 +1,41 @@
+logical funcion duerig_duecol(M, N, matrice)
+    var: i, j: integer
+    begin 
+        (*Controllo per due righe consecutive con elementi uguali*)
+        for i := 1 to M - 1 do
+            for j := 1 to N do 
+                if (matrice (i, j) = matrice(i + 1, j)) then
+                    (*Controllo per due righe consecutive con elementi uguali*)
+                    if (j < N AND matrice(i, j) = matrice(i, j + 1) AND matrice (i + 1, j) = matrice(i + 1, j + 1)) then
+                        duerig_duecol := TRUE
+                        return
+                    endif
+                endif
+            endfor
+        endfor
+        duerig_duecol := FALSE
+        end
+end funcion
+
+begin programma
+    var: M, N, i, j: integer
+    var: a [m,n]: array of integer
+    var: risultato: logical
+
+    read M
+    read N
+
+    for i := 1 to M do
+        for J := 1 to N do
+            read a(i,j)
+        endfor
+    endfor
+    
+    risultato := duerig_duecol(m,n,a)
+
+    if (risultato = .TRUE.) then
+        print "La matrice contiene due righe e due colonne consecutive con elementi uguali."
+    else
+        print "La matrice NON contiene due righe e due colonne consecutive con elementi uguali."
+    endif
+end programma
