@@ -1,0 +1,26 @@
+(*Data una linked list list, con il campo info di tipo integer, progettare in P like un algoritmo
+sottoforma di function ricorsiva, function elimina_da_lista(list,elem) che restituisca la lista privata
+degli elementi con i campi info uguali a elem *)
+
+function elimina_da_lista(list, elem)
+var: list, temp: list_pointer
+var: elem: integer
+begin
+    if (list = NULL) then
+        elimina_da_lista := NULL  (* Se la lista è vuota, restituiamo NULL *)
+    endif
+
+    if (list != NULL) then
+        if (list.info = elem) then
+            (* Se il nodo corrente contiene 'elem', rimuoviamo il nodo *)
+            temp := list
+            dealloca list  (* Dealloca la memoria del nodo corrente *)
+            list := temp.link  (* Salta il nodo corrente *)
+            elimina_da_lista := elimina_da_lista(list, elem)  (* Chiamata ricorsiva per rimuovere 'elem' dal resto della lista *)
+        else
+            (* Se il nodo corrente non contiene 'elem', manteniamo il nodo *)
+            list.link := elimina_da_lista(list.link, elem)  (* Ricorsione per il nodo successivo *)
+            elimina_da_lista := list  (* Restituisce il nodo corrente che non è stato modificato *)
+        endif
+    endif
+endfunction
