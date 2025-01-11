@@ -1,0 +1,59 @@
+(*Questo rimane un codice d'esempio per vedere come funziona una linked list*)
+
+type Nodo = record
+    data: integer  (* Il dato che il nodo contiene *)
+    next: ^Nodo    (* Puntatore al nodo successivo *)
+end record
+
+function creaNodo(valore: integer): ^Nodo
+    var: nuovoNodo: ^Nodo
+    nuovoNodo := allocate Nodo  (* Allocazione di memoria per il nodo *)
+    nuovoNodo.data := valore
+    nuovoNodo.next := NULL  (* Puntatore a NULL, perché è l'ultimo nodo per ora *)
+    return nuovoNodo
+endfunction
+
+procedure inserisciInTesta(var head: ^Nodo, valore: integer)
+    var: nuovoNodo: ^Nodo
+    nuovoNodo := creaNodo(valore)  (* Crea un nuovo nodo *)
+    nuovoNodo.next := head  (* Il nuovo nodo punta al vecchio head *)
+    head := nuovoNodo  (* Head ora punta al nuovo nodo *)
+endprocedure
+
+procedure visualizzaLista(head: ^Nodo)
+    var: corrente: ^Nodo
+    corrente := head
+    while (corrente != NULL) do
+        print corrente.data  (* Stampa il dato del nodo corrente *)
+        corrente := corrente.next  (* Spostati al nodo successivo *)
+    endwhile
+endprocedure
+
+
+begin
+    var: head: ^Nodo
+    head := NULL  (* La lista è vuota inizialmente *)
+
+    (* Inserisci alcuni elementi nella lista *)
+    inserisciInTesta(head, 10)
+    inserisciInTesta(head, 20)
+    inserisciInTesta(head, 30)
+
+    (* Visualizza la lista *)
+    print "Contenuto della LinkedList:"
+    visualizzaLista(head)
+
+    (* Ricerca un elemento *)
+    var: nodoTrovato: ^Nodo
+    nodoTrovato := cercaElemento(head, 20)
+    if (nodoTrovato != NULL) then
+        print "Elemento trovato: ", nodoTrovato.data
+    else
+        print "Elemento non trovato"
+    endif
+
+    (* Rimuovi un elemento *)
+    rimuoviNodo(head, 20)
+    print "Lista dopo la rimozione:"
+    visualizzaLista(head)
+end

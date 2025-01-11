@@ -1,0 +1,25 @@
+function elimina(list, ele)
+var: list, temp: list_pointer
+var: ele: integer
+begin
+    if (list = NULL) then
+        elimina := list  (* Se la lista è vuota, restituiamo NULL *)
+    endif
+
+    if (list != NULL) then
+        if (list.info = ele) then
+            (* Se il nodo corrente contiene 'ele', rimuoviamo il nodo *)
+            temp := list
+            (* Dealloca la memoria del nodo corrente *)
+            dealloca list  
+            (* Salta il nodo corrente *)
+            list := temp.link  
+            (* Chiamata ricorsiva per rimuovere 'ele' dal resto della lista *)
+            elimina := elimina(list, ele)  
+        else
+            (* Se il nodo corrente non contiene 'ele', manteniamo il nodo *)
+            list.link := elimina(list.link, ele)  (* Ricorsione per il nodo successivo *)
+            elimina := list  (* Restituisce il nodo corrente che non è stato modificato *)
+        endif
+    endif
+endfunction
