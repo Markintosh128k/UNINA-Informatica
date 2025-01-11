@@ -8,5 +8,5 @@ begin fattorialeNumero
         fattoriale := fattoriale + i 
     endfor
 
-    print  fattoriale
+    print "Il fattoriale di " numero "e'" fattoriale
 end fattorialeNumero
