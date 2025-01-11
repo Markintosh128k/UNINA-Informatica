@@ -1,0 +1,12 @@
+(*Verifichiamo se il numero dall'utente scelto sara' pari o dispari:*)
+begin verifica
+    var: numero: integer
+    read numero
+    
+    if (numero MOD 2 = 0)
+        print "Il numero è pari"
+    else
+        print "Il numero è dispari"
+    endif
+
+end verifica

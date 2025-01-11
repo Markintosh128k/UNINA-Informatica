@@ -1,0 +1,13 @@
+begin listaNumeri
+    var: N, i, numero, somma: integer
+    somma := 0
+    
+    read N
+    for i := 1 to N do
+        read numero
+        somma := somma + numero
+    endfor
+
+    print "La somma finale e': " somma
+
+end listaNumeri
