@@ -1,0 +1,57 @@
+(*Data una lista head=L1->L2->L3->…->Ln->NULL, il suo prefisso i-esimo consiste della sotto lista 
+head(i)=L1->L2->L3->…->Ln con i<=n. Il prefisso i-esimo di head, è costituito dai suoi primi i 
+elementi. Il peso di una lista head (con il campo info di tipo integer) è la somma dei valori dei campi info. 
+Data una lista head con il campo info di tipo integer ed un intero PESO, supponendo che i valori dei campi 
+info siano tutti positivi, si scriva una function ricorsiva di tipo logical (function esiste_prefisso) per verificare 
+se esiste un prefisso di head di peso PESO. Progettare in p like anche un algoritmo che richiami la function.*)
+
+
+function esiste_prefisso(input: head: list_pointer, peso: integer): logical
+begin
+    if (head = NULL) then
+        esiste_prefisso:=.FALSE.
+    elseif (peso = 0) then
+        esiste_prefisso := .TRUE.
+    elseif (peso < 0) then
+        esiste_prefisso := .FALSE.
+    else
+        esiste_prefisso := esiste_prefisso(head.link, peso - head.info)
+    endif
+endfunction
+
+begin
+var: peso, valore, N, i: integer
+var: head, newnode, nodocorrente: list_pointer
+
+    repeat
+        read peso
+    until (peso >= 0)
+
+    read N
+    read valore
+
+    "alloca head"
+    head := NULL
+    "alloca newnode"
+    newnode.info := valore
+    newnode.link := head
+    head := newnode
+    nodocorrente:=head
+
+    for i := 2 to N do
+        repeat
+            read valore
+            "alloca newnode"
+            newnode.info:=valore
+            newnode.link := nodocorrente.link
+            nodocorrente.link := newnode
+            nodocorrente:=nodocorrente.link
+        until (valore >=0)
+    endfor
+
+    if (esiste_prefisso(head,peso)) then
+        print "Esiste un prefisso con somma uguale al peso"
+    else
+        print "Non esiste alcun prefisso con somma uguale al peso"
+    endif
+end 

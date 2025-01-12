@@ -1,0 +1,14 @@
+function inverti_lista(list): list_pointer
+begin
+    if(list = null OR list.next = null) then
+        return list
+    endif 
+    
+    var: listaInvertita: list_pointer
+    listaInvertita = inverti_lista(list.next)
+
+    list.next.next = list
+    list.next = null
+
+    return listaInvertita
+endfunction

@@ -1,0 +1,10 @@
+function somma_lista(list: list_pointer): integer
+begin
+    if (list = NULL) then
+        somma_lista := 0
+    else
+        somma_lista := list.info + somma_lista(list.link)
+    endif
+end function
+
+    

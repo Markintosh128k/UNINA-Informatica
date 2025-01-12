@@ -1,0 +1,28 @@
+(*Sia dato un array 2D A di dimensioni NxM di tipo integer. Progettare un algoritmo in P-like sottoforma
+di procedure (procedure elementi_non_di_bordo) che restituisca in output un array 2D COORDINATE in
+cui per ogni riga ci siano le coordinate (i,J) degli elementi non di bordo dell’array A che hanno
+come elementi adiacenti (nord, est, sud, ovest) elementi di valore minore. *)
+
+procedure elementi_non_di_bordo(input: N,M,A; output: coordinate)
+var: N, M, I, J, x, nord, sud, ovest, est: integer
+var: a: array of integer
+begin
+    I:=1
+    J:=1
+    x:=1
+
+    for I=2 to n-1 do
+        for J=2 to M-1 do
+        nord:= a(I-1,J)
+        sud:= a(I+1,J)
+        est:= a(I,J+1)
+        ovest:= a(I,J-1)
+
+        if a(I,J) > nord .AND. a(I,J) > sud .AND. A(I,J) > est .AND. a(I,J) > ovest then
+            coordinate(x,1) := I
+            coordinate(x,2) := J
+            x:=x+1
+        endif
+        endfor
+    endfor
+end elementi_non_di_bordo     
