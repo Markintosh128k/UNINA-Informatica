@@ -1,0 +1,19 @@
+Progettare un algoritmo in P-like, sottoforma di function ricorsiva (function campoinfo_uguale) per
+verificare se i valori dei campi info, di tipo intero, degli elementi di una data linked list head,
+contengono valori uguali; la function restituisce TRUE se ciò è verificato, FALSE altrimenti. 
+
+logical function uguale(head)
+var: head, curr: list_pointer
+curr=head.link
+
+if (head=NULL)
+    uguale:=TRUE
+endif
+
+if (head!=NULL)
+    if(head.info = curr.info)
+        uguale:=uguale(head.link)
+    else
+    uguale:=FALSE
+    endif
+endif

@@ -1,0 +1,32 @@
+Dato un array 2D A di tipo intero,di dimensione ALPHAxBETA, con ALPHA pari, BETA>5, progettare in
+P-like un algoritmo, sotto forma di function logica, (quattro_elementi_uguali_somma_altri (A,
+ALPHA, BETA) ) che restituisca TRUE se la somma del primo, terzo, quarto, e penultimo elemento di
+tutte le righe pari è uguale alla somma dei restanti elementi della medesima riga, FALSE altrimenti. 
+
+logical function sommaDiv(a,alpha,beta)
+var: i,j,alpha,beta: integer
+var: a[alpha,beta]: array of integer
+var: somma4, sommarest: integer
+
+begin
+    sommaDiv:=TRUE
+    i:=2
+
+    while(i<=alpha AND sommaDiv=TRUE)
+        somma4:=0
+        sommarest:=0
+        
+        for j:=1 to beta
+            sommarest:=sommarest+a(i,j)
+        endfor
+
+        somma4:=a(i,1)+a(i,3)+a(i,4)+a(i,beta-1)
+        sommarest=sommarest-somma4
+        if (somma4!=sommarest)
+            sommadiv:=FALSE
+        else
+            i:=i+2
+        endif
+        endfor
+    endwhile
+endfunction

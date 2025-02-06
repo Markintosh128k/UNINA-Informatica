@@ -1,0 +1,25 @@
+Sia dato un array A 2D di tipo character di dimensioni NxM.Progettare in P-like un algoritmo
+sottoforma di function (logical function carattere_in_riga (A,N,M ) che restituisca in output TRUE se
+nessuno dei caratteri presenti in una riga è presente nella riga successiva, FALSE altrimenti
+
+logical function carattere(a,n,m)
+var: i,j,k,n,m: integer
+var: a[n,m]: array of character
+carattere:=TRUE
+
+i:=1
+j:=1
+
+while(i<=n-1 AND carattere=TRUE)
+    while(j<=m AND carattere=TRUE)
+
+        for k:=1 to m do
+            if (a(i,j) = a(i+1,k))
+                carattere:=FALSE
+            endif
+        endfor
+
+        j:=j+1
+        endwhile
+    i:=i+1
+endwhile

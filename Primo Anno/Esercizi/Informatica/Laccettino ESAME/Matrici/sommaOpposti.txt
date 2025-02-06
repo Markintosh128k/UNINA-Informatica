@@ -1,0 +1,38 @@
+Sia dato un array 2D A di tipo integer, di dimensioni HxK. Progettare in P-like un algoritmo sotto
+forma di function di tipo logical (function sommaRIGA_uguale_elemento) che restituisca TRUE se la
+somma degli opposti degli elementi di una riga è uguale ad uno degli elementi della riga successiva,
+FALSE altrimenti.
+
+logical function sommariga(a,h,k)
+var: i,j,s,h,k: integer
+ar: a[h,k]: array of integer
+var: somma: integer
+var: flag: logical
+
+begin
+
+sommariga:=TRUE
+i:=1
+
+while (i<=h-1 AND sommariga=TRUE)
+    somma:=0
+    for j:=1 to k
+        somma:=somma+(a(i,j))
+    endfor
+    
+    flag:=FALSE
+    s:=1
+
+    while(s<=k AND flag=FALSE)
+        if(somma = a(i+1,s))
+            flag:=TRUE
+        endif
+            s:=s+1
+    endwhile
+
+    if(flag=FALSE)
+        sommariga:=FALSE
+    endif
+    
+    i:=i+1
+endwhile

@@ -1,0 +1,56 @@
+Dato un array A di tipo integer, di dimensione n, un sottoarray di A è formato di elementi contigui di
+A, ed il suo peso è la somma dei valori di tali elementi. Se A=(1,2,3,4,5,6,7,8,9), il sottoarray A(2…5)
+è uguale a (2,3,4,5) e il suo peso è 14, mentre A[4…7] è uguale a (4,5,6,7) ed il suo peso è 22.
+Progettare in p like una function ricorsiva (logical function exist_sottoarray_didatopeso) che, dato
+un intero PESO ed un array A di dimensione N, di tipo integer, restituisca TRUE se esiste un
+sottoarray di A di peso PESO, FALSE altrimenti. Progettare anche una versione iterativa di tale
+funzione. 
+
+(*Iterativa*)
+logical function esiste(a,n,peso)
+var: i,j,n,ps,peso: integer
+var: a[n]: array of integer
+
+begin
+    esiste:=FALSE
+    i:=1
+    j:=1
+
+    while(i<=n AND esiste=FALSE)
+        ps:=0
+        while(ps<peso AND j<n)
+            ps:=ps+a(j)
+            j:=j+1
+        endwhile
+
+        j:=1
+
+        if(ps=peso)
+            esiste:=TRUE
+        elseif (ps > peso)
+            i:=i+1
+            j:=i
+        endif
+        endwhile
+    endwhile
+end
+
+(*ricorsiva*)
+
+logical function esiste(a,i,j,n,peso,ps)
+var: i,j,n,ps,peso: integer
+var: a[n]: array of integer
+
+if(i=n AND ps!=peso)
+    esiste:=FALSE
+elseif(ps=peso)
+    esiste:=TRUE
+endif
+
+if(ps<peso AND j<n)
+    ps:=ps+a(j)
+    esiste:=esiste(a,i,j+1,n,peso,ps)
+elseif (ps>peso)
+    esiste:=esiste(a,i+1,n,peso,0)
+endif
+endif

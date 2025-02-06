@@ -1,0 +1,63 @@
+logical function consecutive(a,m,n)
+var: i,j,m,n: integer
+var: a[m,n]: array of integer
+var: flag: logical
+
+begin
+    consecutive:=FALSE
+    i:=1
+
+    while(i<=m-1 AND consecutive=FALSE)
+        j:=1
+        flag:=FALSE
+        while(j<=n AND flag=FALSE)
+
+            if(a(i,j) = a(i+1,j))
+                if(j=n)
+                    consecutive:=TRUE
+                endif
+                j:=j+1
+            else
+                flag:=TRUE
+            endif
+        endwhile
+        i:=i+1
+    endwhile
+
+    j:=1
+
+    if(consecutive=TRUE)
+        flag:=FALSE 
+        consecutive:=FALSE
+        while(j<=n-1 AND consecutive=FALSE)
+            i:=1
+            flag:=FALSE
+            while(i<=m AND flag=FALSE)
+                if(a(i,j) = a(i,j+1))
+                    if(i=m)
+                        consecutive:=TRUE
+                    endif
+                    if:=i+1
+                    flag:=TRUE
+                endif
+            endwhile
+            j:=j+1
+        endwhile
+    endif
+endfunction
+
+begin programma
+    var: i,j,m,n: integer
+    var: a[m,n]: array of integer
+    var: consecutive(a,m,n): logical
+
+    function read m,N
+    for i:=1 to m
+        for j:=1 to N
+            read a(i,j)
+        endfor
+    endfor
+
+    consecutive(a,m,n)
+    print consecutive
+end programma

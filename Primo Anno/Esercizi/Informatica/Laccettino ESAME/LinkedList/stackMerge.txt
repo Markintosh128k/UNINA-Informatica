@@ -1,0 +1,28 @@
+Dati 2 stack head1 e head2 “ordinati”, progettare in P like un algoritmo per la costituzione di uno
+stack head3, anch’esso “ordinato”, merge tra head1 e head2. Utilizzare la procedure pop
+(head,elem) e push (head,elem). 
+
+procedure merge(head1,head2,head3)
+var: head1,head2,head3: list_pointer
+
+begin
+    while(head1!=NULL AND head2!=NULL)
+        if(head1.info <= head2.info)
+            pop(head1,ele)
+            push(head3,ele)
+        elseif (head1.info > head2.info)
+            pop(head2,ele)
+            push(head3,ele)
+        endif
+    while
+
+    while (head1!=NULL AND head2=NULL)
+        pop(head1,ele)
+        push(head3,ele)
+    endwhile
+
+    while(head2!=NULL AND head1=NULL)
+        pop(head2,ele)
+        push(head3,ele)
+    endwhile
+end
