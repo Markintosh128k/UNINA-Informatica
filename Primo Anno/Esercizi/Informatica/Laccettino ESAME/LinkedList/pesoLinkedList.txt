@@ -1,0 +1,39 @@
+(*Funzione*)
+logical function esiste(head,peso,somma)
+var: somma: integer
+var: head: list_pointer
+
+begin
+    if (head=NULL)
+        esiste:=FALSE
+    elseif (head!=NULL) do
+        somma := somma + head.info
+        if (somma<peso)
+            esiste:=esiste(head.link,peso,somma)
+        elseif (somma=peso) then
+            esiste:=true
+        elseif somma > peso then
+            esiste:=false
+        endif
+    endif
+    return FALSE
+end
+
+(*Chiamante*)
+begin
+
+var: head: list_pointer
+var: peso, somma, ele, n, i:integer
+    head := create_list()
+    read peso, n
+    for i := 1 to n do
+        read(ele)
+        push(head, ele)
+    endfor
+    somma := 0
+    if esiste(head, peso, somma) then
+        print("vero")
+    else
+        print("falso")
+    endif
+end

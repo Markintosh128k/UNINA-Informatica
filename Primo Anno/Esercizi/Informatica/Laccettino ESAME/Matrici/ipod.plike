@@ -22,6 +22,7 @@ begin
         elseif (i <= K .AND. (j > Y .OR. Ipod_negozio(i,1)< ipod_deposito(j,1))) then
             Totale_ipod(x,1) = Ipod_negozio(i,1)
             Totale_ipod(x,2) = Ipod_negozio(i,2)
+            i:=i+1
         elseif (j <= Y .AND. (i > K .OR. Ipod_deposito(j, 1) < Ipod_negozio(i, 1))) then
             (* Il codice è presente solo in deposito *)
             Totale_ipod(x, 1) := Ipod_deposito(j, 1)
