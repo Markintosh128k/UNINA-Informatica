@@ -1,9 +1,9 @@
 Sia dato un array A 2D di tipo character di dimensioni NxM.Progettare in P-like un algoritmo
-sottoforma di function (logical function carattere_in_riga (A,N,M ) che restituisca in output TRUE se
+sottoforma di function (logical function carattere_in_riga (A,N,M )) che restituisca in output TRUE se
 nessuno dei caratteri presenti in una riga è presente nella riga successiva, FALSE altrimenti
 
 logical function carattere(a,n,m)
-var: i,j,k,n,m: integer
+var: i,j,k: integer
 var: a[n,m]: array of character
 carattere:=TRUE
 
