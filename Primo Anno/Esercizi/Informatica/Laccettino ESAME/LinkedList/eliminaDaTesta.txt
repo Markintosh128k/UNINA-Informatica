@@ -1,0 +1,46 @@
+Data una linked list head con il campo info di tipo intero progettare un algoritmo ricorsivo in p like 
+che elimini dalla lista tutti gli elementi che nel campo info contengono il valore dato, ELEM. Si 
+organizzi in 2 procedure, entrambe ricorsive, una che elimina ELEM dalla testa  
+del_testa(head,ELEM), una che elimina ELEM dal mezzo della lista del_mezzo(head,ELEM), ed una 
+terza procedura, delete_elem (head, ELEM) che utilizza le altre due.
+
+(*Elimina da testa*)
+procedure del_testa (in/out: head, ELEM)
+var: head: list_pointer
+var: ELEM: integer
+
+if (head!=NULL .AND. head.info=ELEM) then
+    head:=head.link
+    del_testa(head,ELEM)
+endif
+end del_testa
+
+(*
+Elimina dal mezzo, ma poi che cazzo vuol dire?
+Tu fai un codice dicendo "Elimina nel mezzo"
+A sto punto dici direttamente "Elimina un elemento a cazzo che non sia il primo
+O che non sia l'ultimo dio quel porco maledetto
+*)
+(*Comunque, elimina dal mezzo*)
+procedure del_mezzo(in/out: head,ELEM)
+    var: head: list_pointer
+    var: ELEM: integer
+    
+    if (head!=NULL .AND. head.link!=NULL) then
+        if(head.link.info=ELEM) then
+            head.link:=head.link.link
+            del_mezzo(head, ELEM)
+        else
+            del_mezzo(head.link, ELEM)
+        endif
+    endfunction
+end del_mezzo
+
+(*Chiamiamolo, "chiamante" che utilizza entrambe*)
+procedure delete_elem(in/out: head,ELEM)
+    var: head: list_pointer
+    var: ELEM: integer
+
+    del_testa(head,ELEM)
+    del_mezzo(head,ELEM)
+end delete_elem

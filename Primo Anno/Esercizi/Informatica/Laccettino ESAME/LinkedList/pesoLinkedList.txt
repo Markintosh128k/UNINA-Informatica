@@ -1,3 +1,11 @@
+Data una lista head=L1->L2->L3->…->Ln->NULL, il suo prefisso i-esimo consiste della sotto lista
+head(i)=L1->L2->L3->…->L4n (?) con i<=n. Il prefisso i-esimo di head, vale a dire, è costituito dai suoi primi i
+elementi. Il peso di una lista head (con il campo info di tipo integer) è la somma dei valori dei campi info.
+Data una lista head con il campo info di tipo integer ed un intero PESO, supponendo che i valori dei campi
+info siano tutti positivi, si scriva una function ricorsiva di tipo logical (function esiste_prefisso) per verificare
+se esiste un prefisso di head di peso PESO. Progettare in p like anche un algoritmo che richiami la function 
+
+
 (*Funzione*)
 logical function esiste(head,peso,somma)
 var: somma: integer

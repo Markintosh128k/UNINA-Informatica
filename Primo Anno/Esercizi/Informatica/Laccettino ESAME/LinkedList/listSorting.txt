@@ -1,0 +1,24 @@
+9) Data una linked list head con il campo info di tipo integer, progettare un algoritmo in p like
+sottoforma di procedure (procedure list_sort) che, utilizzando il metodo exchange sort, e che restituisca la
+lista head ordinata in senso crescente secondo i valori del campo info. Ad esempio, se head= 3->5->6->4-
+>2, l’output sarà head=2->3->4->5->6 
+
+procedure sort(head,n)
+var: i,j,n:integer
+var: head,current,temp: list_pointer
+sort:=FALSE
+curr:=head.link
+i:=1
+
+while(i<=n .AND. sort=FALSE)
+    sort:=TRUE
+    for j:=1 to n-i do
+        if(head.info > curr.info)
+            temp:=head.info
+            head.info:=curr.info
+            curr.info:=temp
+            sort:=FALSE
+        endif
+    endfor
+    i:=i+1
+endwhile

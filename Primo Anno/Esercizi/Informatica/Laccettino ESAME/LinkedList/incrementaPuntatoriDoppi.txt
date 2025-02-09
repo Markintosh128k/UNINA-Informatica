@@ -1,0 +1,27 @@
+Sia head una linked-list i cui campi info possono essere 0 e 1 in modo che head rappresenti sia un 
+numero binario. La lista head è implementata con puntatori doppi (ogni elemento punta al 
+precedente e al successivo). Progettare in P like un algoritmo sottoforma di procedure, procedure 
+incrementa (head, r) che incrementi di 1 il valore rappresentato da head. La chiamata del main è 
+del tipo r:=1 /r è il riporto /u, incrementa (head, r). 
+
+procedure incrementa (in/out: head, r)
+var: head, newnode: list_pointer
+var: r: integer
+
+begin
+
+while(head!=NULL .AND. r=1) do
+    if (head.info=1) then
+        head.info:=0
+        if (head.next!=NULL) then
+            head:=head.next
+        else
+            newnode.info:=1
+            newnode.prev:=head
+            newnode.next:=NULL
+            head.next:=newnode
+            r:=0
+        endif
+    endif
+endwhile
+end

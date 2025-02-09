@@ -1,0 +1,40 @@
+13) Sia A una matrice di dimensione nxn, contenente numeri interi. Sviluppare in P-like un algoritmo
+ricorsivo, sottoforma di function di tipo logical (function diagonale (A,riga)), con A array 2D di tipo
+integer, di dimensioni nxn, implementazione della matrice A, che restituisca TRUE se tutti gli
+elementi della diagonale principale sono nulli, FALSE altrimenti. La chiamata main è del tipo:
+matrice_diagonale:= diagonale (A,n) 
+
+logical function diagonale (in: A, riga, N)
+	var: riga, N: integer
+	var: A(N, N): array of integer
+	
+	if (riga = 0) then
+		diagonale:=TRUE
+	elseif (A(riga, riga) != 0) then
+		diagonale:= FALSE
+	else
+		diagonale:= diagonale(A, riga - 1, N)
+	endif
+end diagonale
+
+(*Chiamante*)
+var: A(N, N): array of integer
+var: N, i, j: integer
+var: risultato: logical
+
+begin
+	read N
+	for i:= 1 to N do
+		for j:= 1 to N do
+			read A(i, j)
+		endfor
+	endfor
+	
+	risultato:= diagonale(A, N, N)
+	
+	if (risultato) then
+		print 'VERO'
+	else
+		print 'FALSO'
+	endif
+end

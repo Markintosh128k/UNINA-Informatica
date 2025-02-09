@@ -6,51 +6,40 @@ un intero PESO ed un array A di dimensione N, di tipo integer, restituisca TRUE 
 sottoarray di A di peso PESO, FALSE altrimenti. Progettare anche una versione iterativa di tale
 funzione. 
 
-(*Iterativa*)
-logical function esiste(a,n,peso)
-var: i,j,n,ps,peso: integer
-var: a[n]: array of integer
-
-begin
-    esiste:=FALSE
-    i:=1
-    j:=1
-
-    while(i<=n AND esiste=FALSE)
-        ps:=0
-        while(ps<peso AND j<n)
-            ps:=ps+a(j)
-            j:=j+1
-        endwhile
-
-        j:=1
-
-        if(ps=peso)
-            esiste:=TRUE
-        elseif (ps > peso)
-            i:=i+1
-            j:=i
-        endif
-        endwhile
-    endwhile
-end
-
 (*ricorsiva*)
+logical function exist_sottoarray_didatopeso (in A, i, j, N, PESO, somma)
+    var: A(N): array of integer
+    var: i, j, somma, PESO: integer
 
-logical function esiste(a,i,j,n,peso,ps)
-var: i,j,n,ps,peso: integer
-var: a[n]: array of integer
+    if (i > N) then
+        exist_sottoarray_didatopeso := FALSE
+    else if (somma = PESO) then
+        exist_sottoarray_didatopeso := TRUE
+    else if (somma < PESO AND j <= N) then
+        exist_sottoarray_didatopeso := exist_sottoarray_didatopeso(A, i, j+1, N, PESO, somma + A(j))
+    else
+        exist_sottoarray_didatopeso := exist_sottoarray_didatopeso(A, i+1, i+1, N, PESO, 0)
+    endif
+end exist_sottoarray_didatopeso
 
-if(i=n AND ps!=peso)
-    esiste:=FALSE
-elseif(ps=peso)
-    esiste:=TRUE
-endif
+(*iterativa*)
+logical function exist_sottoarray_didatopeso_iterativo (in A, N, PESO)
+    var: i, j, somma: integer
+    var: A(N): array of integer
 
-if(ps<peso AND j<n)
-    ps:=ps+a(j)
-    esiste:=esiste(a,i,j+1,n,peso,ps)
-elseif (ps>peso)
-    esiste:=esiste(a,i+1,n,peso,0)
-endif
-endif
+    for i := 1 to N do
+        somma := 0
+        j := i
+        while (j <= N AND somma < PESO) do
+            somma := somma + A(j)
+            j := j + 1
+        endwhile
+        
+        if (somma = PESO) then
+            exist_sottoarray_didatopeso_iterativo := TRUE
+            return
+        endif
+    endfor
+    
+    exist_sottoarray_didatopeso_iterativo := FALSE
+end exist_sottoarray_didatopeso_iterativo

@@ -2,8 +2,9 @@ Dati 2 stack head1 e head2 “ordinati”, progettare in P like un algoritmo per
 stack head3, anch’esso “ordinato”, merge tra head1 e head2. Utilizzare la procedure pop
 (head,elem) e push (head,elem). 
 
-procedure merge(head1,head2,head3)
+procedure merge(in/out: head1,head2,head3)
 var: head1,head2,head3: list_pointer
+var: ele: integer
 
 begin
     while(head1!=NULL AND head2!=NULL)

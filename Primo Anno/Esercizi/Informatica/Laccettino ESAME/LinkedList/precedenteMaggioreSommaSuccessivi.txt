@@ -1,0 +1,54 @@
+Progettare in p like un algoritmo sottoforma di function (logical function 
+precedente_maggiore_sommasuccessivi) che data una linked list head (con campo info di tipo integer), 
+restituisca TRUE se ciascun valore dei campi info è maggiore della somma di tutti i valori dei campi info 
+degli elementi successivi, FALSE altrimenti. Utilizzare una function ricorsiva (function 
+somma_valori_campinfosuccessivi), pure da progettare, in p like, che, data una linked list, restituisca la 
+somma dei valori dei campi info (di tipo integer) dei suoi elementi. Progettare anche in p like, un algoritmo 
+che richiami la function precedente_maggiore_sommasuccessivi 
+
+logical function precedente_maggiore_sommasuccessivi (in: head)
+var: head: list_pointer
+begin
+	if (head=NULL OR head.link = NULL) then
+		precedente_maggiore_sommasuccessivi:= TRUE
+	else if (head.info <= somma_successivi(head.link)) then
+		precedente_maggiore_sommasuccessivi:= FALSE
+	elfe
+		precedente_maggiore_sommasuccessivi:= precedente_maggiore_sommasuccessivi(head.link)
+	endif
+end
+
+integer function somma_successivi (in: head)
+var: head: list_pointer
+var: somma: integer	
+begin
+	if (head = NULL) then
+		somma_successivi:= 0
+	else
+		somma_successivi:= head.info + somma_successivi(head.link)
+	endif
+end
+
+
+(*Chiamante*)
+var: head: list_pointer
+var: risultato: logical
+var: ele, N, i: integer
+
+begin
+	head:= create_list(head)
+	read N
+	
+	for i:= 1 to N do
+		read ele
+		push(head, ele)
+	endfor
+	
+	risultato:= precedente_maggiore_sommasuccessivi(head)
+	
+	if (risultato) then 
+		print 'VERO'
+	else
+		print 'FALSO'
+	endif
+end

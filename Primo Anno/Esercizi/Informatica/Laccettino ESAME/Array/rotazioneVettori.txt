@@ -1,0 +1,37 @@
+15) Una rotazione di vettore x è il vettore che si ottiene spostando ogni componente del vettore un
+certo numero di posti verso sinistra, assumendo che il vettore sia circolare. Ad esempio, ruotando
+di 3 posti il vettore x=(0;1;2;3;4;5;6;7;8;9) si ottiene i, vettore xrot=(3;4;5;6;7;8;9;0;1;2). Progettare
+in P like un algoritmo sottoforma di procedure (procedure rotazione_array) che, dati due array X e
+Y, di dimensione n, restituisce in output una variabile rotazione di tipo character che vale ‘s’ se uno
+è la rotazione dell’altro, ‘n’ altrimenti. 
+
+procedure rotazione(x, y, n)
+var: i, j, k: integer
+var: x[n], y[n]: array of integer
+var: rotation: character
+
+begin
+    rotation := 'n'
+    i := 1
+    j := 1
+    k := 1
+
+    while (j <= n .AND. rotation = 'n') do
+        if (x(i) != y(j)) then
+            k := k + 1
+            i := k
+            j := 1
+        else
+            i := i + 1
+            j := j + 1
+
+            if (i > n) then
+                i := 1
+            endif
+
+            if (j > n) then
+                rotation := 's'
+            endif
+        endif
+    endwhile
+endprocedure
