@@ -1,0 +1,63 @@
+Si consideri la successione a1=0,a2=1,a3=2, anew=a1+2*a2+a3 con n>3. Progettare in p like,
+sottoforma di function (logical function controllo_numeri_successione (N1,N2,N3)) che, dati 3
+numeri interi N1<N2<N3, con N1>a3, restituisca TRUE se il numero di elementi della successione
+compresi tra N1 e N2 (cioè N1<=a3<=N2) è uguale al numero di elementi maggiori di N2 e minori o
+uguali di N3, FALSE altrimenti. Progettare anche un chiamante
+
+(*Funzione*)
+logical function controllo(in:n1,n2,n3)
+var: a1, a2, a3, aNew: integer
+var: cont1, cont2, n1, n2, n3: integer
+
+a1:=0
+a2:=1
+a3:=2
+aNew=a1+2*a2+a3
+
+cont1:=0
+cont2:=0
+controllo:=FALSE
+
+while (aNew<=n2)
+    if(aNew<=n2 .AND. aNew>=n1)
+        cont=cont1+1
+        a1=a2
+        a2=a3
+        a3=aNew
+        aNew=a1+2*a2+a3
+    else
+        a1=a2
+        a2=a3
+        a3=aNew
+        aNew=a1+2*a2+a3
+    endif
+endwhile
+
+while (aNew<=n3)
+    if(anew>n2 AND aNew<=n3)
+        cont2:=cont2+1
+        a1=a2
+        a2=a3
+        a3=aNew
+        aNew=a1+2*a2+a3
+    endif
+endwhile
+
+if (cont1=cont2)
+    controllo:=TRUE
+endif
+
+
+(*Chiamante*)
+var: n1,n2,n3: integer
+var:controllo_numeri_successione(...): logical function
+
+begin
+    read n1,n2,n3
+    controllo_numeri_successione(n1,n2,n3)
+    if(controllo_numeri_successione(n1,n2,n3)) then
+        print "vero"
+    else
+        print "falso"
+    endif
+end

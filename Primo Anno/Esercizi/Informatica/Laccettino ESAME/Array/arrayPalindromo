@@ -1,0 +1,25 @@
+Un array A (di tipo integer) si dice palindromo se letto da sinistra verso destra si ottiene la stessa
+sequenza di numeri che si otterrebbe leggendolo all’incontrario. Ad esempio A={0,1,2,3,4,3,2,1,0} è
+palindromo. Progettare un algoritmo, sottoforma di function ricorsiva (logical function
+is_array_palindromo) per verificare se un array è un palindromo
+
+
+logical function is_array_palindromo(a,n,i,j)
+var: i,j,n: integer
+var: a[n]: array of integer
+
+begin
+    if(i=n .AND. j=1)
+        if(a(i) = a(j))
+            is_array_palindromo:=TRUE
+        else
+            is_array_palindromo:=FALSE
+        endif
+    endif
+
+    if(a(i) = a(j))
+        is_array_palindromo:=is_array_palindromo(a,n,i+1,j+1)
+    else
+        is_array_palindromo:=FALSE
+    endif
+end

@@ -1,0 +1,63 @@
+24) Sia data la successione: a1:=0 a2:=1 a3:=2, anew:=a1+2*+a3 per n>3. Progettare in P-like un
+algoritmo sottoforma di procedure (procedure diff_elem_successione) che, dati 2 interi N1 e N2,
+con N1<N2 e N1>a3, restituisca in output l’intero (N1 o N2) che ha una minore differenza rispetto
+ad un elemento della successione, ed il valore di tale differenza. Progettare in P-like anche un
+esempio di algoritmo che utilizza la procedura. 
+
+procedure diff_elem_successione(N1, N2, min_num, min_diff)
+    var: a1, a2, a3, an, diff1, diff2: integer
+
+begin
+    (* Inizializzazione della successione *)
+    a1 := 0
+    a2 := 1
+    a3 := 2
+    an := a1 + 2 * a2 + a3
+
+    (* Generazione della successione fino a superare N1 *)
+    while an < N1 do
+        a1 := a2
+        a2 := a3
+        a3 := an
+        an := a1 + 2 * a2 + a3
+    endwhile
+
+    (* Calcolo della differenza minima per N1 *)
+    diff1 := abs(N1 - an)
+    if abs(N1 - a3) < diff1 then
+        diff1 := abs(N1 - a3)
+    endif
+
+    (* Generazione della successione fino a superare N2 *)
+    while an < N2 do
+        a1 := a2
+        a2 := a3
+        a3 := an
+        an := a1 + 2 * a2 + a3
+    endwhile
+
+    (* Calcolo della differenza minima per N2 *)
+    diff2 := abs(N2 - an)
+    if abs(N2 - a3) < diff2 then
+        diff2 := abs(N2 - a3)
+    endif
+
+    (* Determinazione del numero con la differenza minore *)
+    if diff1 < diff2 then
+        min_num := N1
+        min_diff := diff1
+    else
+        min_num := N2
+        min_diff := diff2
+    endif
+end
+
+(* Chiamante *)
+    var: N1, N2, min_num, min_diff: integer
+    begin
+        print "Inserisci due numeri (N1 < N2 e N1 > 2):"
+        read N1, N2
+        diff_elem_successione(N1, N2, min_num, min_diff)
+        print "Numero con la minore differenza:", min_num
+        print "Valore della differenza:", min_diff
+    end
