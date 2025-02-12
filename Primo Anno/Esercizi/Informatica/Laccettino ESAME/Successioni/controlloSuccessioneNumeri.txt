@@ -1,0 +1,52 @@
+Si consideri la successione a1=0,a2=1,a3=2, anew=a1+2*a2+a3 con n>3. Progettare in p like,
+sottoforma di function (logical function controllo_numeri_successione (N1,N2,N3)) che, dati 3
+numeri interi N1<N2<N3, con N1>a3, restituisca TRUE se il numero di elementi della successione
+compresi tra N1 e N2 (cioè N1<=a3<=N2) è uguale al numero di elementi maggiori di N2 e minori o
+uguali di N3, FALSE altrimenti. Progettare anche un chiamante
+
+(* Funzione *)
+logical function controllo(n1, n2, n3)
+    var: a1, a2, a3, aNew, cont1, cont2: integer
+begin
+    (* Inizializzazione della successione *)
+    a1 := 0
+    a2 := 1
+    a3 := 2
+    aNew := a1 + 2 * a2 + a3
+
+    cont1 := 0
+    cont2 := 0
+    controllo := FALSE
+
+    (* Conteggio dei termini tra n1 e n2 *)
+    while aNew <= n3 do
+        if aNew >= n1 .AND. aNew <= n2 then
+            cont1 := cont1 + 1
+        elseif aNew > n2 then
+            cont2 := cont2 + 1
+        endif
+        
+        (* Aggiornamento successione *)
+        a1 := a2
+        a2 := a3
+        a3 := aNew
+        aNew := a1 + 2 * a2 + a3
+    endwhile
+
+    (* Confronto dei conteggi *)
+    if cont1 = cont2 then
+        controllo := TRUE
+    endif
+end
+
+
+(* Chiamante *)
+var: n1, n2, n3: integer
+begin
+    read n1, n2, n3
+    if controllo(n1, n2, n3) then
+        print "vero"
+    else
+        print "falso"
+    endif
+end

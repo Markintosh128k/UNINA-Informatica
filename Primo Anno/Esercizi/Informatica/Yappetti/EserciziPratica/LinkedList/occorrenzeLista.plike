@@ -1,0 +1,12 @@
+function conta_occorrenze(list, val):integer
+begin
+    if (list = NULL) then
+        conta_occorrenze := 0
+    else
+    if (list = val) then
+        conta_occorrenze = 1 + conta_occorrenze(list.link)
+    endif
+    else
+        conta_occorrenze := conta_occorrenze(list.link)
+    endif
+endfunction

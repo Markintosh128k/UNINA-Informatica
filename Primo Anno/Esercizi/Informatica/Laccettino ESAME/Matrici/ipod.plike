@@ -1,0 +1,34 @@
+(*Siano dati due array 2D, Ipod_negozio, di dimensioni Kx2 , e ipod_deposito , di dimensioni Yx2, 
+entrambi di tipo intero. In questi array sono memorizzati, per ciascuna riga, nella colonna 1 il codice 
+di un ipod, e nella colonna 2 quanti ipod di quel tipo sono presenti, rispettivamente, in negozio ed 
+in deposito. Le righe di entrambi gli array sono ordinate per codice del ipod. Progettare in P_like un 
+algoritmo, sotto forma di procedure (procedure Quantita_ipod), che fornisca come risultato un 
+array 2D Totale_ipod che, sempre rispettando l'ordine secondo il codice-ipod, nella colonna 2 
+indichi quanti ipod, per ciascun tipo, sono disponibili in totale (tra negozio e deposito).*)
+
+procedure Quantita_ipod(input: K,Y, Ipod_negozio, ipod_deposito, Totale_ipod)
+var: i,j,x: integer
+begin
+    i:=1
+    j:=1
+    x:=1
+
+    while (i<=K, .OR. j<=y) do
+        if (i<=K .AND. j<=Y .AND. Ipod_negozio(i,1) = ipod_deposito(j,1)) then
+            Totale_ipod(x,1) := Ipod_negozio(i,1)
+            Totale_ipod(x,2) := Ipod_negozio(i,2) + ipod_deposito(j,2)
+            i:=i+1
+            j:=j+1
+        elseif (i <= K .AND. (j > Y .OR. Ipod_negozio(i,1)< ipod_deposito(j,1))) then
+            Totale_ipod(x,1) = Ipod_negozio(i,1)
+            Totale_ipod(x,2) = Ipod_negozio(i,2)
+            i:=i+1
+        elseif (j <= Y .AND. (i > K .OR. Ipod_deposito(j, 1) < Ipod_negozio(i, 1))) then
+            (* Il codice è presente solo in deposito *)
+            Totale_ipod(x, 1) := Ipod_deposito(j, 1)
+            Totale_ipod(x, 2) := Ipod_deposito(j, 2)
+            j := j + 1
+        endif
+        x:=x+1
+    endwhile
+endprocedure

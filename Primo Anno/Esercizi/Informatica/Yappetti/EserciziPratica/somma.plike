@@ -1,0 +1,6 @@
+begin somma
+    var: num1, num2, somma: integer
+    read num1
+    read num2
+    somma := num1+num2
+end

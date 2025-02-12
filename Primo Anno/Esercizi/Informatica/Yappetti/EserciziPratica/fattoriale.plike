@@ -1,0 +1,12 @@
+begin fattorialeNumero
+    var: numero, fattoriale: integer
+
+    read numero
+    fattoriale := 1
+
+    for i := 1 to numero do
+        fattoriale := fattoriale + i 
+    endfor
+
+    print "Il fattoriale di " numero "e'" fattoriale
+end fattorialeNumero

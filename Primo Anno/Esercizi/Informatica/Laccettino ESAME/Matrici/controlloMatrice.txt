@@ -1,0 +1,56 @@
+32) Data una matrice A di dimensione NxN, di tipo intero, progettare un algoritmo sotto forma di
+function (logical function controllo_righe_colonne) che restituisca TRUE se la somma degli elementi
+di ogni riga è minore di quella della riga precedente e la somma degli elementi di ogni colonna è
+maggiore o uguale della somma della colonna precedente, FALSE altrimenti. 
+
+logical function controllo_righe_colonne(a,n)
+var: i,j,k,h,n: integer
+var: somma_riga, somma_riga_prec, somma_colonna, somma_colonna_prec: integer
+
+begin
+    controllo_righe_colonne:=TRUE
+    i:=n 
+
+    while (i>=1 .AND. controllo_righe_colonne=TRUE) do
+        somma_riga:=0
+        somma_riga_prec:=0
+
+        for j:=1 to N do
+            somma_riga:=somma_riga+A(i,j)
+        endfor
+
+        if i>1 then
+            for k:=1 to N do
+                somma_riga_prec:=somma_colonna_prec + A(i-1, k)
+            endfor
+        endif
+
+        if (somma_riga>=somma_riga_prec) then
+            controllo_righe_colonne:=FALSE
+        endfunction
+
+        i:= i-1
+    endwhile
+    j:=n
+
+    while (j>=1 .AND. controllo_righe_colonne=TRUE) do
+        somma_colonna:=0
+        somma_colonna_prec:=0
+
+        for i:=1 to n do
+            somma_colonna:=somma_colonna + A(i,j)
+        endfor
+
+        if j>1 then
+            for h:=1 to N do
+                somma_colonna_prec:=somma_colonna_prec + A(h, j-1)
+            endfor
+        endif
+
+        if (somma_colonna < somma_colonna_prec) then
+            controllo_righe_colonne:=FALSE
+        endif
+
+        j:=j-1
+    endwhile
+end function

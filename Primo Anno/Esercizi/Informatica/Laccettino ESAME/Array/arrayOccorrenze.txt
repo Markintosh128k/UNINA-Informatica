@@ -1,0 +1,43 @@
+14) Siano dati 2 array 1D di tipo character, A di dimensione N,B di dimensione M, con N<M. Progettare
+in p like un algoritmo, sottoforma di function (function occorrenze_A_in_B) che restituisca in
+output il numero di occorrenze di A in B. Ad esempio se A=aa e B=ccdaaaabaa allora la function
+restituisce 4. Progettare anche in p like un algoritmo che usi la function
+
+integer function occorrenze(a,b,n,m)
+var: i,j,k,n,m: integer
+var: a[n], b[m]: array of character
+i:=1
+j:=1
+k:=1
+
+while (k<=m)
+    if (a(i) = b(j))
+        if (i=n)
+            occorrenze:=occorrenze+1
+            i:=1
+            k:=k+1
+            j:=k
+        endif
+        i:=i+1
+        j:=j+1
+    else
+        i:=1
+        k:=k+1
+        j:=K
+    endif
+endwhile
+end function
+
+
+(*Chiamante*)
+var: a[n], b[m]: array of character
+var: n,m,i,j: integer
+
+begin
+    read n,M
+    for i:=1 to n do
+        read a(i)
+    endfor
+    occorrenze_A_in_B(a,b,n,m)
+    print "occorrenze:=occorrenze_A_in_B(a,b,n,m)
+end

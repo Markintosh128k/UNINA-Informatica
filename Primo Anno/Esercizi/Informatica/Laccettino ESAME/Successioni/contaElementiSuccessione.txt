@@ -1,0 +1,32 @@
+Si consideri la successione: a1:=0 a2:=1 a2:=1 a3:=2, anew:=a1+2*a2+a3 per n>3. Progettare in p
+like un algoritmo sottoforma di function di tipo intero function
+conta_elementi_successione_data(K) che, dato un intero, K>1, restituisca il numero degli elementi
+della successione <=K, escludendo i multipli di 3 e di 7. Si supponga di avere a disposizione 2
+functions di tipo logico, is_multiple_of_3(num) e is_multiple_of_7(num), che restituiscono TRUE se
+num è multiplo di 3 o di 7, rispettivamente. 
+
+integer function conta_elementi_successione_data(k)
+var: a1,a2,a3,aNew,k: integer
+
+begin
+    a1:=0
+    a2:=1
+    a3:=2
+    aNew:=a1+2*a2+a3
+    conta_elementi_successione_data:=1
+
+    while (aNew<=K)
+        if(!m3(aNew) .AND. !m7(aNew))
+            conta_elementi_successione_data:=conta_elementi_successione_data+1
+            a1:=a2
+            a2:=a3
+            a3:=aNew
+            aNew:=a1+2*a2+a3
+        else
+            a1:=a2
+            a2:=a3
+            a3:=aNew
+            aNew:=a1+2*a2+a3
+        endif
+    endwhile
+end

@@ -1,0 +1,18 @@
+logical function sottoSequenza (head1, head2)
+var: head1, head2: list_pointer
+
+begin
+    if (head2:=NULL)
+        sottoSequenza:=TRUE 
+    elseif (head1=NULL .AND. head2!=NULL)
+        sottoSequenza:=FALSE
+    endif
+
+    if (head1!=null and head2!=NULL)
+        if(head2.info = head1.info)
+            sottoSequenza:=sottoSequenza(head1.link, head2.link)
+        else
+            sotto:=sotto(head1.link, head2)
+        endif
+    endif
+endfunction

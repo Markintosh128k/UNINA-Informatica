@@ -1,0 +1,30 @@
+Date 3 linked list list1,list2,list3, progettare in p like un algoritmo sottoforma di function 
+ricorsiva(logical function somma_lista(head1,head2,head3) che restituisca TRUE se head3 è la 
+somma di head1 e head2, elemento per elemento. FALSE altrimenti. Si supponga di avere il numero 
+di elementi di head3 al massimo numero di elementi tra head1 e head2.
+
+logical function somma_lista(in: head1, head2, head3)
+var: head1, head2, head3: list_pointer
+
+begin
+    if (head1=NULL .AND. head2=NULL .AND. head3=NULL) then
+        if(head3.info = head1.info+head2.info)
+        somma_lista:=somma_lista(head1.link, head2.link, head3.link)
+        else
+            somma_lista:=FALSE
+        endif
+    endif
+
+    if (head1!=NULL .AND. head2!=NULL .AND. head3!=NULL)
+        if(head3.info = head2.info)
+            somma_lista:=somma_lista(head1,head2.link,head3.link)
+        else
+            somma_lista:=FALSE
+        endif
+    endif
+
+    if(head1=NULL .AND. head2=NULL .AND. head3=NULL)
+        somma_lista:=TRUE
+    endfunction
+    endif
+end

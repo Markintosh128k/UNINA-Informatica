@@ -1,0 +1,30 @@
+procedure sommaUguale (input: k, num; output:  somma, valore, posizione)
+
+var: a1,a2,a3,aNew: integer
+var: pos, k, num, valore: integer
+var: somma: logical
+
+a1:=0 
+a2:=1 
+a3:=2
+
+begin
+    aNew:=a1+2*a2+a3
+    pos:=4
+    while (aNew<num .AND. pos<=k) do
+        a1:=a2
+        a2:=a3
+        a3:=aNew
+
+        aNew:=a1+2*a2+a3
+        pos:=pos+2
+    endwhile
+
+    if (aNew=num) then
+        somma:=TRUE
+        valore:=num
+    else
+        somma:=FALSE
+        valore:=aNew
+    endif
+end

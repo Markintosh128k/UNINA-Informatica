@@ -1,0 +1,45 @@
+Dato un array A di tipo integer, di dimensione n, un sottoarray di A è formato di elementi contigui di
+A, ed il suo peso è la somma dei valori di tali elementi. Se A=(1,2,3,4,5,6,7,8,9), il sottoarray A(2…5)
+è uguale a (2,3,4,5) e il suo peso è 14, mentre A[4…7] è uguale a (4,5,6,7) ed il suo peso è 22.
+Progettare in p like una function ricorsiva (logical function exist_sottoarray_didatopeso) che, dato
+un intero PESO ed un array A di dimensione N, di tipo integer, restituisca TRUE se esiste un
+sottoarray di A di peso PESO, FALSE altrimenti. Progettare anche una versione iterativa di tale
+funzione. 
+
+(*ricorsiva*)
+logical function exist_sottoarray_didatopeso (in A, i, j, N, PESO, somma)
+    var: A(N): array of integer
+    var: i, j, somma, PESO: integer
+
+    if (i > N) then
+        exist_sottoarray_didatopeso := FALSE
+    else if (somma = PESO) then
+        exist_sottoarray_didatopeso := TRUE
+    else if (somma < PESO AND j <= N) then
+        exist_sottoarray_didatopeso := exist_sottoarray_didatopeso(A, i, j+1, N, PESO, somma + A(j))
+    else
+        exist_sottoarray_didatopeso := exist_sottoarray_didatopeso(A, i+1, i+1, N, PESO, 0)
+    endif
+end exist_sottoarray_didatopeso
+
+(*iterativa*)
+logical function exist_sottoarray_didatopeso_iterativo (in A, N, PESO)
+    var: i, j, somma: integer
+    var: A(N): array of integer
+
+    for i := 1 to N do
+        somma := 0
+        j := i
+        while (j <= N AND somma < PESO) do
+            somma := somma + A(j)
+            j := j + 1
+        endwhile
+        
+        if (somma = PESO) then
+            exist_sottoarray_didatopeso_iterativo := TRUE
+            return
+        endif
+    endfor
+    
+    exist_sottoarray_didatopeso_iterativo := FALSE
+end exist_sottoarray_didatopeso_iterativo

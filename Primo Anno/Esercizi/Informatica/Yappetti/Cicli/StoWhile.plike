@@ -1,0 +1,7 @@
+/* Se invece usi il while
+a meno che non ci sta un motivo di ottimizzazione non sei mio amico.
+tho almeno lo fai fino a quando non hai il risultato (non farlo in c ti prego...)*/
+
+while (condizione) do
+    istruzione
+endwhile

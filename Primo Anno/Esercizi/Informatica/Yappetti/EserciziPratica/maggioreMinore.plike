@@ -1,0 +1,14 @@
+begin programma
+    var: num1, num2: integer
+    read num1
+    read num2
+
+    if (num1 > num2)
+        print "Il primo numero e' maggiore di" num2
+    elseif (num2 > num1)
+        print "Il secondo numero "e' minore di" num1
+    else
+        print "I numeri sono uguali."
+    endif
+    
+end programma

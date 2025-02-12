@@ -1,0 +1,13 @@
+function elimina_pari(list): list
+begin
+    if (list = null) then
+        return null
+    endif
+
+    if (list.value MOD 2 = 0) then
+        return elimina_pari(list.next)
+    else
+        list.next = elimina_pari(list.next)
+        return list
+    endif
+endfunction
